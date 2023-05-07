@@ -1,6 +1,6 @@
 package MultimediaPlayer;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class ImageItem extends MediaItem implements Brightness {
 	int brightness;
@@ -14,19 +14,45 @@ public class ImageItem extends MediaItem implements Brightness {
 		super(title);
 		this.brightness = brightness;
 	}
+	public int getBrightness() {
+		return brightness;
+	}
 
 	public void brightnessUp() {
-		brightness++;
+		brightness = brightness < 10 ? ++brightness : 10;
 	}
 
 	public void brightnessDown() {
-		brightness--;
+		brightness = brightness > 0 ? --brightness  : 0;
 	}
 
 	public void show() {
-		char [] brightnessString = new char [brightness];
-		Arrays.fill(brightnessString, '*');
-		System.out.println(title + " " + String.valueOf(brightnessString));
+		Scanner input = new Scanner(System.in);
+		
+
+
+		while(true){
+			System.out.println("Do you want to change the brightness? (y/n y=yes n=no)");
+			char resp = input.next().charAt(0);
+			if ( resp == 'y'){
+				System.out.println("Turn Up or turn down? (u/d u=up d=down)");
+				char direction = input.next().charAt(0);
+				if( direction == 'u'){
+					brightnessUp();
+					System.out.printf("New brightness level is %s%n", brightness);
+				}else if(direction == 'd'){
+					brightnessDown();
+					System.out.printf("New brightness level is %s%n", brightness);
+				}else{
+					System.out.printf("Entered option %s not valid! Please enter u/d, u = Up, d = Down%n", direction);	
+				}
+			}else if( resp == 'n'){
+				break;
+			}else{
+				System.out.printf("Entered option %s not valid! Please enter y/n, y = yes, n = no%n", resp);
+			}
+		}		
+		System.out.println(title + " " + "*".repeat(brightness));
 	}
 
 	@Override

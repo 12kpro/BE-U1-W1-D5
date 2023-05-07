@@ -1,6 +1,7 @@
 package MultimediaPlayer;
 
 public interface Brightness {
-	   public void brightnessUp();
-	   public void brightnessDown();
+	public int getBrightness();
+	public void brightnessUp();
+	public void brightnessDown();
 }
