@@ -8,7 +8,7 @@ public class Player {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		MediaItem[] tracks = new MediaItem[5];
-		Boolean auto = true; //set tru for auto creation
+		Boolean auto = true; //set true for auto creation folse for user form
 
 		if (!auto){
 		String type, title;
@@ -19,8 +19,8 @@ public class Player {
 
 			switch (type) {
 			case "1":
-			System.out.println("Enter track title");
-			title = scanner.nextLine();
+				System.out.println("Enter track title");
+				title = scanner.nextLine();
 				System.out.println("Enter track duration");
 				duration = Math.abs(Integer.parseInt(scanner.nextLine()));
 				System.out.println("Enter track volume");
@@ -29,8 +29,8 @@ public class Player {
 				i++;
 				break;
 			case "2":
-			System.out.println("Enter track title");
-			title = scanner.nextLine();
+				System.out.println("Enter track title");
+				title = scanner.nextLine();
 				System.out.println("Enter video volume");
 				volume = checkValue(0,10);
 				System.out.println("Enter video duration");
@@ -41,8 +41,8 @@ public class Player {
 				i++;
 				break;
 			case "3":
-			System.out.println("Enter track title");
-			title = scanner.nextLine();
+				System.out.println("Enter track title");
+				title = scanner.nextLine();
 				System.out.println("Enter image brightness");
 				brightness = checkValue(0,10);
 				tracks[i] = new ImageItem(title, brightness);
